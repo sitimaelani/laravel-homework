@@ -32,7 +32,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{ route('get_petugas') }}">
+            <form action="#">
               <div class="card-body">
                 <div class="form-group">
                   <label for="id">Id Buku</label>
@@ -41,6 +41,10 @@
                 <div class="form-group">
                   <label for="exampleInputPassword1">Kode Buku</label>
                   <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Kode">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Id Rak</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Id Rak">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Judul</label>

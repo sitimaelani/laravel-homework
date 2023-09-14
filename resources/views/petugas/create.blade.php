@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'anggota')
+@section('title', 'petugas')
     @section('content')
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -12,7 +12,7 @@
                   <div class="col-sm-6">
                       <ol class="breadcrumb float-sm-right">
                           <li class="breadcrumb-item"><a href="#">Home</a></li>
-                          <li class="breadcrumb-item active">Anggota</li>
+                          <li class="breadcrumb-item active">Petugas</li>
                       </ol>
                   </div><!-- /.col -->
               </div><!-- /.row -->
@@ -20,55 +20,31 @@
       </div>
       <!-- /.content-header -->
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-              <h3 class="card-title">Data Anggota</h3>
+   <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Data Petugas</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{ route('get_buku') }}">
+            <form action="{{ route('data_perpus') }}">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="id">Id Anggota</label>
+                  <label for="id">Id Petugas</label>
                   <input type="text" class="form-control" id="id" placeholder="Masukkan Id">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Kode Anggota</label>
+                  <label for="exampleInputPassword1">Nama Petugas</label>
                   <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Kode">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Nama</label>
+                  <label for="exampleInputPassword1">Jabatan</label>
                   <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Nama">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Jenis Kelamin</label>
-                      <div class="custom-control custom-radio">
-                        <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
-                        <label for="customRadio1" class="custom-control-label">Laki-laki</label>
-                      </div>
-                      <div class="custom-control custom-radio">
-                        <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio">
-                        <label for="customRadio2" class="custom-control-label">Perempuan</label>
-                      </div>
-                      </div>
-                <div class="form-group">
-                      <label>Jurusan</label>
-                      <select class="custom-select">
-                      <option selected disabled>Pilih Jurusan</option>
-                      <option>RPL</option>
-                      <option>DPIB</option>
-                      <option>TP</option>
-                      <option>TFLM</option>
-                      <option>TEI</option>
-                      <option>TITL</option>
-                      <option>TKJ</option>
-                      </select>
                 </div>
                 <div class="form-group">
                 <label>No Telpon</label>
@@ -84,10 +60,9 @@
                       <textarea class="form-control" rows="3" placeholder="Masukan alamat"></textarea>
                     </div>
                   </div>
-              <!-- /.card-body -->
 
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Next</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>

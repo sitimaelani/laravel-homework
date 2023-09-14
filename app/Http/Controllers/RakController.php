@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class AnggotaController extends Controller
+class RakController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +12,19 @@ class AnggotaController extends Controller
     public function index()
     {
         //
-        $members = DB::table('members')->get();
-        return view('anggota.index', compact('members'));
     }
-    
+    public function rak()
+    {
+        //
+        return view('perpustakaan.rak');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         //
-        return view('anggota.create');
     }
 
     /**
@@ -32,25 +33,6 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'kode_anggota' => 'required',
-            'nama_anggota' => 'required',
-            'jk_anggota' => 'required',
-            'jurusan_anggota' => 'required',
-            'no_telpon' => 'required',
-            'alamat_anggota' => 'required',
-        ]);
-
-        $query = DB::table('members')->insert([
-            'kode_anggota' => $request['kode_anggota'],
-            'nama_anggota' => $request['nama_anggota'],
-            'jk_anggota' => $request['jk_anggota'],
-            'jurusan_anggota' => $request['jurusan_anggota'],
-            'no_telpon' => $request['no_telpon'],
-            'alamat_anggota' => $request['alamat_anggota'],
-        ]);
-
-        return redirect('/anggota');
     }
 
     /**

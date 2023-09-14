@@ -28,7 +28,7 @@
             <!-- Add icons to the links using the .nav-icon class
    with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{ route('data_perpus')}}" class="nav-link">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Data Perpustakaan
@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('get_anggota') }}" class="nav-link">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Data Anggota
@@ -44,21 +44,45 @@
                 </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('get_buku') }}" class="nav-link ">
+              <a href="#" class="nav-link ">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
-                      Data Buku
+                      Data Peminjaman
                   </p>
               </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('get_petugas') }}" class="nav-link ">
+            <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                    Data Petugas
+                    Data Pengembalian
                 </p>
             </a>
         </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Data Buku
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                  Data Rak
+              </p>
+          </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+                Data Petugas
+            </p>
+        </a>
+    </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

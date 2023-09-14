@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AnggotaController,
     BukuController,
-    PetugasController
+    PetugasController,
+    RakController,
+    PeminjamanController,
+    PengembalianController
 };
 
 /*
@@ -20,8 +23,11 @@ use App\Http\Controllers\{
 
  Route::get('/', function () {
     return view('welcome');
-})->name('data_perpus');
+})->name('dashboard');
 
-Route::get('/perpustakaan/anggota', [AnggotaController::class, 'anggota'])->name('get_anggota');
-Route::get('/perpustakaan/buku', [BukuController::class, 'buku'])->name('get_buku');
-Route::get('/perpustakaan/petugas', [PetugasController::class, 'petugas'])->name('get_petugas');
+Route::resource('/anggota', AnggotaController::class);
+// Route::get('/perpustakaan/buku', [BukuController::class, 'buku'])->name('get_buku');
+// Route::get('/perpustakaan/petugas', [PetugasController::class, 'petugas'])->name('get_petugas');
+// Route::get('/perpustakaan/rak', [RakController::class, 'rak'])->name('get_rak');
+// Route::get('/perpustakaan/peminjaman', [PeminjamanController::class, 'peminjaman'])->name('get_peminjaman');
+// Route::get('/perpustakaan/pengembalian', [PengembalianController::class, 'pengembalian'])->name('get_pengembalian');
