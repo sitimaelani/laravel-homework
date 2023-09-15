@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('operators', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_petugas', 50);
+            $table->string('jabatan', 50);
+            $table->char('no_telpon', 13);
+            $table->string('alamat_petugas', 100);
             $table->timestamps();
         });
     }

@@ -32,23 +32,16 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="#">
+            <form action="{{route ('rak.store')}}" method="POST">
+              @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="id">Id Rak</label>
-                  <input type="text" class="form-control" name="id" id="id" placeholder="Masukkan Id">
-                </div>
-                <div class="form-group">
                   <label for="exampleInputPassword1">Nama Rak</label>
-                  <input type="text" class="form-control" name="nama" id="exampleInputPassword1" placeholder="Masukan Nama">
+                  <input type="text" class="form-control" name="nama_rak" id="exampleInputPassword1" placeholder="Masukan Nama">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Lokasi Rak</label>
-                  <input type="text" class="form-control" name="lokasi" id="exampleInputPassword1" placeholder="Masukan Lokasi">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Id Buku</label>
-                  <input type="text" class="form-control" name="id_buku" id="exampleInputPassword1" placeholder="Masukan Id">
+                  <input type="text" class="form-control" name="lokasi_rak" id="exampleInputPassword1" placeholder="Masukan Lokasi">
                 </div>
               <!-- /.card-body -->
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RakController extends Controller
 {
@@ -12,12 +13,10 @@ class RakController extends Controller
     public function index()
     {
         //
+        $raks = DB::table('raks')->get();
+        return view('rak.index', compact('raks'));
     }
-    public function rak()
-    {
-        //
-        return view('perpustakaan.rak');
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -25,6 +24,7 @@ class RakController extends Controller
     public function create()
     {
         //
+        return view('rak.create');
     }
 
     /**
@@ -33,6 +33,17 @@ class RakController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nama_rak' => 'required',
+            'lokasi_rak' => 'required',
+        ]);
+
+        $query = DB::table('raks')->insert([
+            'nama_rak' => $request['nama_rak'],
+            'lokasi_rak' => $request['lokasi_rak'],
+        ]);
+
+        return redirect('/rak');
     }
 
     /**

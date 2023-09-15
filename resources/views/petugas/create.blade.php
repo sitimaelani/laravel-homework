@@ -32,19 +32,16 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{ route('data_perpus') }}">
+            <form action="{{ route('petugas.store') }}" method="POST">
+              @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="id">Id Petugas</label>
-                  <input type="text" class="form-control" id="id" placeholder="Masukkan Id">
-                </div>
-                <div class="form-group">
                   <label for="exampleInputPassword1">Nama Petugas</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Kode">
+                  <input type="text" class="form-control" name="nama_petugas" id="exampleInputPassword1" placeholder="Masukan Nama">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Jabatan</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Nama">
+                  <input type="text" class="form-control" name="jabatan" id="exampleInputPassword1" placeholder="Masukan Jabatan">
                 </div>
                 <div class="form-group">
                 <label>No Telpon</label>
@@ -52,12 +49,12 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
                   </div>
-                  <input type="number" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                  <input type="number" class="form-control" name="no_telpon" data-inputmask='"mask": "(999) 999-9999"' data-mask>
                 </div>
                 <!-- textarea -->
                 <div class="form-group">
                       <label>Alamat</label>
-                      <textarea class="form-control" rows="3" placeholder="Masukan alamat"></textarea>
+                      <textarea class="form-control" rows="3" name="alamat_petugas" placeholder="Masukan alamat"></textarea>
                     </div>
                   </div>
 

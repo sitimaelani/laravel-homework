@@ -26,6 +26,8 @@ use App\Http\Controllers\{
 })->name('dashboard');
 
 Route::resource('/anggota', AnggotaController::class);
+Route::resource('/petugas', PetugasController::class);
+Route::resource('/rak', RakController::class);
 // Route::get('/perpustakaan/buku', [BukuController::class, 'buku'])->name('get_buku');
 // Route::get('/perpustakaan/petugas', [PetugasController::class, 'petugas'])->name('get_petugas');
 // Route::get('/perpustakaan/rak', [RakController::class, 'rak'])->name('get_rak');

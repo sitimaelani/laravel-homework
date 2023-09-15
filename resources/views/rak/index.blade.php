@@ -41,21 +41,17 @@
                     <thead>
                     <tr>
                       <th>nomor</th>
-                      <th>nama petugas</th>
-                      <th>jabatan petugas</th>
-                      <th>no telpon</th>
-                      <th>alamat petugas</th>
+                      <th>nama rak</th>
+                      <th>lokasi</th>
                     </tr>
                     </thead>
                     <tbody>
                     </tbody>
-                        @forelse ($operators as $key => $values)
+                        @forelse ($raks as $key => $values)
                         <tr>
                             <td>{{ $key + 1}}</td>
-                            <td>{{ $values->nama_petugas}}</td>
-                            <td>{{ $values->jabatan}}</td>
-                            <td>{{ $values->no_telpon}}</td>
-                            <td>{{ $values->alamat_petugas}}</td>
+                            <td>{{ $values->nama_rak}}</td>
+                            <td>{{ $values->lokasi_rak}}</td>
                             <td>
                                 <a href="#" class="btn-sm btn-info">show</a>
                                 <a href="#" class="btn-sm btn-warning">edit</a>
