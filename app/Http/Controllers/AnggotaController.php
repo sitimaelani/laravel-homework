@@ -59,6 +59,8 @@ class AnggotaController extends Controller
     public function show(string $id)
     {
         //
+        $members = DB::table('members')->where('id', $id)->get();
+        return view('anggota.show', compact('members'));
     }
 
     /**
@@ -67,6 +69,8 @@ class AnggotaController extends Controller
     public function edit(string $id)
     {
         //
+        $members = DB::table('members')->where('id', $id)->get();
+        return view('anggota.edit', compact('members'));
     }
 
     /**
@@ -75,6 +79,24 @@ class AnggotaController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'kode_anggota' => 'required',
+            'nama_anggota' => 'required',
+            'jk_anggota' => 'required',
+            'jurusan_anggota' => 'required',
+            'no_telpon' => 'required',
+            'alamat_anggota' => 'required',
+        ]);
+
+        $query = DB::table('members')->where('id', $id)->update([
+            'kode_anggota' => $request['kode_anggota'], 
+            'nama_anggota' => $request['nama_anggota'],
+            'jk_anggota' => $request['jk_anggota'],
+            'jurusan_anggota' => $request['jurusan_anggota'],
+            'no_telpon' => $request['no_telpon'],
+            'alamat_anggota' => $request['alamat_anggota'],
+        ]);
+        return redirect()->route('anggota.index');
     }
 
     /**
@@ -83,5 +105,7 @@ class AnggotaController extends Controller
     public function destroy(string $id)
     {
         //
+        $query = DB::table('members')->where('id', $id)->delete();
+        return redirect()->route('anggota.index');
     }
 }

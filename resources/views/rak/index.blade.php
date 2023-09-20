@@ -67,8 +67,13 @@
                     </tfoot>
                     </table>
                   </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
                   <!-- /.card-body -->
-                </div>
+  </div>
                 <!-- /.card -->
                 
 

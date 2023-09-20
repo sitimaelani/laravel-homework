@@ -48,6 +48,12 @@
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Next</button>
               </div>
+              </div>
             </form>
           </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
     @endsection 

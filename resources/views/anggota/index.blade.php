@@ -19,7 +19,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
               <li class="breadcrumb-item active">Data Tables</li>
             </ol>
           </div>
@@ -31,9 +31,9 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              <div class="card">
+              <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Data Perpustakaan</h3>
+                  <h3 class="card-title">Data Anggota</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -50,20 +50,24 @@
                     </tr>
                     </thead>
                     <tbody>
-                    </tbody>
-                        @forelse ($members as $key => $values)
+                        @forelse ($members as $key => $value)
+                        <form action="{{route ('anggota.destroy', $value->id)}}" method="POST">
+                          @csrf
+                          @method('DELETE')
                         <tr>
                             <td>{{ $key + 1}}</td>
-                            <td>{{ $values->kode_anggota}}</td>
-                            <td>{{ $values->nama_anggota}}</td>
-                            <td>{{ $values->jk_anggota}}</td>
-                            <td>{{ $values->jurusan_anggota}}</td>
-                            <td>{{ $values->no_telpon}}</td>
-                            <td>{{ $values->alamat_anggota}}</td>
+                            <td>{{ $value->kode_anggota}}</td>
+                            <td>{{ $value->nama_anggota}}</td>
+                            <td>{{ $value->jk_anggota}}</td>
+                            <td>{{ $value->jurusan_anggota}}</td>
+                            <td>{{ $value->no_telpon}}</td>
+                            <td>{{ $value->alamat_anggota}}</td>
                             <td>
-                                <a href="#" class="btn-sm btn-info">show</a>
-                                <a href="#" class="btn-sm btn-warning">edit</a>
-                                <a href="#" class="btn-sm btn-danger">delete</a>
+                                <a href="{{route('anggota.show', $value->id)}}" class="btn-sm btn-info">show</a>
+                                <a href="{{route('anggota.edit', $value->id)}}" class="btn-sm btn-warning">edit</a>
+                                <button type="submit" class="btn-sm btn-danger">delete</button>
+                                
+                                </form>
                             </td>
                         </tr>
                         @empty
@@ -71,14 +75,41 @@
                                 <td>Data masih kosong</td>
                             </tr>
                         @endforelse
-                    <tfoot>
-                    </tfoot>
+                          </tbody>
                     </table>
                   </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-                
+                  <!-- /.card footer -->
+                  <div class="card-footer">
+                    <div class="row justify-content-between">
+                      <div class="col-3">
+                        <a class="btn btn-primary" href="{{route('anggota.create')}}" role="button"> + anggota </a>
+                    </div>
+                    <div class="col-3">
+                        <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button page-item previous disabled" id="example2_previous"><a
+                                        href="#" aria-controls="example2" data-dt-idx="0" tabindex="0"
+                                        class="page-link">Previous</a></li>
+                                <li class="paginate_button page-item active"><a href="{{route('anggota.index')}}"
+                                        aria-controls="example2" data-dt-idx="1" tabindex="0"
+                                        class="page-link">1</a></li>
+                                <li class="paginate_button page-item"><a href="{{route('petugas.index')}}"
+                                        aria-controls="example2" data-dt-idx="2" tabindex="0"
+                                        class="page-link">2</a></li>
+                                <li class="paginate_button page-item next disabled" id="example2_next"><a
+                                        href="#" aria-controls="example2" data-dt-idx="2" tabindex="0"
+                                        class="page-link">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+</div>
 
 @endsection
 
@@ -95,5 +126,22 @@
 <script src="{{asset ('Template/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset ('Template/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset ('Template/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 @endpush
 

@@ -19,7 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   
-  @include('separate.header')
+  @include('separate.navbar')
   @include('separate.sidebar')
   @yield('content')
   @include('separate.footer')
