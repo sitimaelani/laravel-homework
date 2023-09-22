@@ -83,7 +83,7 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-primary" href="{{route('anggota.index')}}" role="button">back</a>
               </div>
               </div>
             </div>
