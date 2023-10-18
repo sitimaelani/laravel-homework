@@ -5,6 +5,16 @@
           class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Perpustakaan</span>
   </a>
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="image">
+        <img src="{{ asset('Template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+            alt="User Image">
+    </div>
+    <div class="info">
+        <a href="{{ route('rak.edit', Auth::user()->id) }}" class="d-block text-white">{{ Auth::user()->name }}</a>
+        {{-- href="{{ route('user.edit', Auth::user()->id) }}" --}}
+    </div>
+</div>
 
   <!-- Sidebar -->
   <div class="sidebar mt-2">
@@ -82,6 +92,12 @@
                           Create Petugas
                       </p>
                   </a>
+              </li><br><br><br><br><br>
+              <li class="nav-item">
+                <form action="{{ route('auth.logout')}}" method="POST">
+                @csrf 
+                <button type="submit" class="nav-link btn btn-light btn-sm">Logout</button>
+                </form>
               </li>
           </ul>
       </nav>

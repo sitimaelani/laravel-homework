@@ -60,6 +60,8 @@ class RakController extends Controller
     public function edit(string $id)
     {
         //
+        $raks = DB::table('raks')->where('id', $id)->get();
+        return view('rak.edit', compact('raks'));
     }
 
     /**
@@ -68,6 +70,17 @@ class RakController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'nama_rak' => 'required',
+            'lokasi_rak' => 'required',
+        ]);
+
+        $query = DB::table('raks')->where('id', $id)->update([
+            'nama_rak' => $request['nama_rak'],
+            'lokasi_rak' => $request['lokasi_rak'],
+        ]);
+
+        return redirect()->route('rak.index');
     }
 
     /**
@@ -76,5 +89,7 @@ class RakController extends Controller
     public function destroy(string $id)
     {
         //
+        $query = DB::table('raks')->where('id', $id)->delete();
+        return redirect()->route('rak.index');
     }
 }

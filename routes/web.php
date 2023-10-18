@@ -7,7 +7,8 @@ use App\Http\Controllers\{
     PetugasController,
     RakController,
     PeminjamanController,
-    PengembalianController
+    PengembalianController,
+    AuthController
 };
 
 /*
@@ -21,13 +22,23 @@ use App\Http\Controllers\{
 |
 */
 
+Route::controller(AuthController::class)->group(function() {
+    Route::get('/register', 'register')->name('auth.register');
+    Route::post('/store', 'store')->name('auth.store');
+    Route::get('/login', 'login')->name('auth.login');
+    Route::post('/auth', 'authentication')->name('auth.authentication');
+    Route::get('/dashboard', 'dashboard')->name('auth.dashboard');
+    Route::post('/logout', 'logout')->name('auth.logout');
+});
+
  Route::get('/', function () {
     return view('welcome');
 })->name('dashboard');
 
-Route::resource('/anggota', AnggotaController::class);
-Route::resource('/petugas', PetugasController::class);
-Route::resource('/rak', RakController::class);
+Route::resource('/anggota', AnggotaController::class)->middleware('auth');
+Route::resource('/petugas', PetugasController::class)->middleware('auth');
+Route::resource('/rak', RakController::class)->middleware('auth');
+Route::resource('/buku', BukuController::class)->middleware('auth');
 // Route::get('/perpustakaan/buku', [BukuController::class, 'buku'])->name('get_buku');
 // Route::get('/perpustakaan/petugas', [PetugasController::class, 'petugas'])->name('get_petugas');
 // Route::get('/perpustakaan/rak', [RakController::class, 'rak'])->name('get_rak');

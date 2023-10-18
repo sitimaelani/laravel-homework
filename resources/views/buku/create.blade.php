@@ -32,31 +32,36 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="#">
+            <form action="{{ route('buku.store') }}" method="POST" enctype="multipart/form-data">
+              @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="id">Id Buku</label>
-                  <input type="text" class="form-control" id="id" placeholder="Masukkan Id">
-                </div>
-                <div class="form-group">
                   <label for="exampleInputPassword1">Kode Buku</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Kode">
+                  <input type="text" class="form-control" name="kode_buku" id="exampleInputPassword1" placeholder="Masukan Kode">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Id Rak</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Id Rak">
+                  <label for="id_rak">Nama rak</label>
+                  <select name="id_rak" id="id_rak" class="form-control">
+                    <option disabled selected>--Pilih Salah Satu--</option>
+                      @forelse ($raks as $key => $value )
+                        <option value="{{ $value->id }}">{{ $value->nama_rak }}</option>
+                      @empty
+                        <option disabled>--Data Masih Kosong--</option>
+                      @endforelse 
+                      {{-- ($casts as $key => $value) --}}
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Judul</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Nama">
+                  <input type="text" class="form-control" name="judul_buku" id="exampleInputPassword1" placeholder="Masukan Nama">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Penulis</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Kode">
+                  <input type="text" class="form-control" name="penulis_buku" id="exampleInputPassword1" placeholder="Masukan Kode">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Penerbit</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukan Nama">
+                  <input type="text" class="form-control" name="penerbit_buku" id="exampleInputPassword1" placeholder="Masukan Nama">
                 </div>
 
               <!-- Date dd/mm/yyyy -->
@@ -66,7 +71,7 @@
                       <div class="input-group-prepend">
                       <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                       </div>
-                      <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                      <input type="text" class="form-control" name="tahun_penerbit" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                   </div>
               </div>
 
@@ -81,6 +86,12 @@
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Next</button>
               </div>
+              </div>
             </form>
           </div>
+        </div>
+      </div>
+    </div>
+   </section>
+    </div>
     @endsection 
