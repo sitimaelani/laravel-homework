@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('judul_buku', 50);
             $table->string('penulis_buku', 50);
             $table->string('penerbit_buku', 50);
-            $table->char('penerbit', 13);
+            $table->char('tahun_penerbit', 4);
+            $table->integer('stok_buku');
             $table->unsignedBigInteger('rak_id');
             $table->foreign('rak_id')->references('id')->on('raks');
             $table->timestamps();

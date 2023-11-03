@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Petugas;
 use Illuminate\Support\Facades\DB;
 
 class PetugasController extends Controller
@@ -12,8 +14,7 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        //
-        $operators = DB::table('operators')->get();
+        $operators= Petugas::all();
         return view('petugas.index', compact('operators'));
     }
     

@@ -32,7 +32,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{ route('buku.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('buku.store') }}" method="POST" >
               @csrf
               <div class="card-body">
                 <div class="form-group">
@@ -40,8 +40,8 @@
                   <input type="text" class="form-control" name="kode_buku" id="exampleInputPassword1" placeholder="Masukan Kode">
                 </div>
                 <div class="form-group">
-                  <label for="id_rak">Nama rak</label>
-                  <select name="id_rak" id="id_rak" class="form-control">
+                  <label for="rak_id">Nama rak</label>
+                  <select name="rak_id" id="rak_id" class="form-control">
                     <option disabled selected>--Pilih Salah Satu--</option>
                       @forelse ($raks as $key => $value )
                         <option value="{{ $value->id }}">{{ $value->nama_rak }}</option>
@@ -78,7 +78,7 @@
               <!-- Stok -->
               <div class="form-group">
                   <label>Stok</label>
-                  <input type="number" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                  <input type="number" class="form-control" name="stok_buku" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                   </div>
               
               <!-- /.card-body -->

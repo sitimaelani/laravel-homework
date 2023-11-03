@@ -10,7 +10,10 @@ class Rak extends Model
     use HasFactory;
 
     protected $table = 'raks';
-    protected $fillable = ['nama_rak'];
+    protected $fillable = [
+        'nama_rak',
+        'lokasi_rak'
+];
 
     public function Buku()
     {

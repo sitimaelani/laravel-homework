@@ -32,44 +32,67 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{route('get_buku')}}">
+            <form action="{{route('pengembalian.store', $anggota[0]->id, $buku[0]->id, $petugas[0]->id)}}">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="id">Id Pengembalian</label>
-                  <input type="text" class="form-control" name="id" id="id" placeholder="Masukkan Id">
+                  <label for="genre">Nama Anggota</label>
+                  <select name="nama_anggota" id="genre" class="form-control">
+                    <option disabled selected>--Pilih Salah Satu--</option>
+                      @forelse ($anggota as $key => $value )
+                        <option value="{{ $value->id }}">{{ $value->nama_anggota}}</option>
+                      @empty
+                        <option disabled>--Data Masih Kosong--</option>
+                      @endforelse 
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="genre">Nama Buku</label>
+                  <select name="id_buku" id="genre" class="form-control">
+                    <option disabled selected>--Pilih Salah Satu--</option>
+                      @forelse ($buku as $key => $value )
+                        <option value="{{ $value->id }}">{{ $value->judul_buku}}</option>
+                      @empty
+                        <option disabled>--Data Masih Kosong--</option>
+                      @endforelse 
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="genre">Nama Petugas</label>
+                  <select name="id_petugas" id="genre" class="form-control">
+                    <option disabled selected>--Pilih Salah Satu--</option>
+                      @forelse ($petugas as $key => $value )
+                        <option value="{{ $value->id }}">{{ $value->nama_petugas}}</option>
+                      @empty
+                        <option disabled>--Data Masih Kosong--</option>
+                      @endforelse 
+                  </select>
                 </div>
                 <!-- Date dd/mm/yyyy -->
                 <div class="form-group">
-                    <label>Tanggal Kembali</label>
+                    <label>Tanggal Pengembalian</label>
   
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                       </div>
-                      <input type="text" class="form-control" name="tglkbl" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                      <input type="date" class="form-control" name="tanggal_pengembalian" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Denda</label>
                     <input type="text" class="form-control" name="denda" id="exampleInputPassword1" placeholder="Masukan Denda">
-                  </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Id Buku</label>
-                  <input type="text" class="form-control" name="id_buku" id="exampleInputPassword1" placeholder="Masukan Id">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Id Anggota</label>
-                    <input type="text" class="form-control" name="id_buku" id="exampleInputPassword1" placeholder="Masukan Id">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Id Petugas</label>
-                    <input type="text" class="form-control" name="id_petugas" id="exampleInputPassword1" placeholder="Masukan Id">
-                </div>  
+                </div> 
               <!-- /.card-body -->
 
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Next</button>
               </div>
+              </div>
             </form>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+    </div>
     @endsection 

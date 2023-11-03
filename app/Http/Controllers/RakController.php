@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rak;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class RakController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        //
-        $raks = DB::table('raks')->get();
+        $raks = Rak::all();
+
         return view('rak.index', compact('raks'));
     }
     
@@ -23,7 +24,6 @@ class RakController extends Controller
      */
     public function create()
     {
-        //
         return view('rak.create');
     }
 
@@ -32,18 +32,18 @@ class RakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
         $request->validate([
             'nama_rak' => 'required',
             'lokasi_rak' => 'required',
         ]);
 
-        $query = DB::table('raks')->insert([
-            'nama_rak' => $request['nama_rak'],
-            'lokasi_rak' => $request['lokasi_rak'],
-        ]);
+        $raks = new Rak;
+        $raks->nama_rak = $request->nama_rak;
+        $raks->lokasi_rak = $request->lokasi_rak;
+        $raks->save();
 
-        return redirect('/rak');
+        return redirect()->route('rak.index');
     }
 
     /**
@@ -57,28 +57,26 @@ class RakController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Rak $rak)
     {
-        //
-        $raks = DB::table('raks')->where('id', $id)->get();
-        return view('rak.edit', compact('raks'));
+        return view('rak.edit', compact('rak'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Rak $rak)
     {
         //
         $request->validate([
-            'nama_rak' => 'required',
+            'nama_rak' => 'required|unique:genres',
             'lokasi_rak' => 'required',
+            ], [
+                'nama_rak.required' => 'Nama harus diisi',
+                'nama_rak.unique' => 'Nama sudah pernah digunakan!',
         ]);
 
-        $query = DB::table('raks')->where('id', $id)->update([
-            'nama_rak' => $request['nama_rak'],
-            'lokasi_rak' => $request['lokasi_rak'],
-        ]);
+        $rak->update($request->all());
 
         return redirect()->route('rak.index');
     }
@@ -86,10 +84,9 @@ class RakController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Rak $raks)
     {
-        //
-        $query = DB::table('raks')->where('id', $id)->delete();
+        $raks->delete();
         return redirect()->route('rak.index');
     }
 }

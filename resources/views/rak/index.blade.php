@@ -56,8 +56,7 @@
                             <td>{{ $values->nama_rak}}</td>
                             <td>{{ $values->lokasi_rak}}</td>
                             <td>
-                                <a href="#" class="btn-sm btn-info">show</a>
-                                <a href="{{route('rak.edit', $values->id)}}" class="btn-sm btn-warning">edit</a>
+                                <a href="{{ route('rak.edit', $values->id)}}" class="btn-sm btn-warning">edit</a>
                                 <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                         </form>
                             </td>

@@ -41,27 +41,25 @@
                     <thead>
                     <tr>
                       <th>no</th>
-                      <th>kode buku</th>
-                      <th>rak</th>
+                      <th>nama anggota</th>
                       <th>judul buku</th>
-                      <th>penulis buku</th>
-                      <th>penerbit buku</th>
-                      <th>tahun terbit</th>
+                      <th>nama petugas</th>
+                      <th>tanggal pengembalian</th>
+                      <th>denda</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @forelse ($buku as $key => $value)
-                        <form action="{{route ('buku.destroy', $value->id)}}" method="POST">
+                        @forelse ($pengembalian as $key => $value)
+                        <form action="{{route ('pengembalian.destroy', $value->id)}}" method="POST">
                           @csrf
                           @method('DELETE')
                         <tr>
                             <td>{{ $key + 1}}</td>
-                            <td>{{ $value->kode_buku}}</td>
-                            <td>{{ $value->rak[0]->nama_rak}}</td>
-                            <td>{{ $value->judul_buku}}</td>
-                            <td>{{ $value->penulis_buku}}</td>
-                            <td>{{ $value->penerbit_buku}}</td>
-                            <td>{{ $value->tahun_penerbit}}</td>
+                            <td>{{ $value->anggota[0]->nama_anggota}}</td>
+                            <td>{{ $value->buku[0]->judul_buku}}</td>
+                            <td>{{ $value->petugas[0]->nama_petugas}}</td>
+                            <td>{{ $value->tanggal_pengembalian}}</td>
+                            <td>{{ $value->denda}}</td>
                             <td>
                                 <a href="#" class="btn-sm btn-info">show</a>
                                 <a href="#" class="btn-sm btn-warning">edit</a>
@@ -82,8 +80,7 @@
                   <div class="card-footer">
                     <div class="row justify-content-between">
                       <div class="col-3">
-                        <a class="btn btn-primary" href="{{route('buku.create')}}" role="button"> + buku </a>
-                     
+                        <a class="btn btn-primary" href="{{route('buku.create')}}" role="button"> + anggota </a>
                     </div>
                     <div class="col-3">
                         <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
@@ -91,17 +88,17 @@
                                 <li class="paginate_button page-item previous disabled" id="example2_previous"><a
                                         href="#" aria-controls="example2" data-dt-idx="0" tabindex="0"
                                         class="page-link">Previous</a></li>
-                                <li class="paginate_button page-item "><a href="{{route('anggota.index')}}"
+                                <li class="paginate_button page-item active"><a href="{{route('anggota.index')}}"
                                         aria-controls="example2" data-dt-idx="1" tabindex="0"
                                         class="page-link">1</a></li>
                                 <li class="paginate_button page-item"><a href="{{route('petugas.index')}}"
                                         aria-controls="example2" data-dt-idx="2" tabindex="0"
                                         class="page-link">2</a></li>
-                                <li class="paginate_button page-item active"><a href="{{route('buku.index')}}"
+                                <li class="paginate_button page-item"><a href="{{route('buku.index')}}"
                                         aria-controls="example2" data-dt-idx="3" tabindex="0"
                                         class="page-link">3</a></li>
                                 <li class="paginate_button page-item next disabled" id="example2_next"><a
-                                        href="{{('peminjaman.index')}}" aria-controls="example2" data-dt-idx="2" tabindex="0"
+                                        href="#" aria-controls="example2" data-dt-idx="2" tabindex="0"
                                         class="page-link">Next</a></li>
                             </ul>
                         </div>

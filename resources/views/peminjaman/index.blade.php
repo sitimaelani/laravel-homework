@@ -5,8 +5,6 @@
 <link rel="stylesheet" href="{{asset('Template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 
 @endpush
-
-
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -33,7 +31,7 @@
             <div class="col-12">
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Data Buku</h3>
+                  <h3 class="card-title">Data Peminjaman</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -41,27 +39,25 @@
                     <thead>
                     <tr>
                       <th>no</th>
-                      <th>kode buku</th>
-                      <th>rak</th>
+                      <th>nama anggota</th>
                       <th>judul buku</th>
-                      <th>penulis buku</th>
-                      <th>penerbit buku</th>
-                      <th>tahun terbit</th>
+                      <th>nama petugas</th>
+                      <th>tanggal pinjam</th>
+                      <th>tanggal kembali</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @forelse ($buku as $key => $value)
-                        <form action="{{route ('buku.destroy', $value->id)}}" method="POST">
+                        @forelse ($peminjaman as $key => $value)
+                        <form action="{{route ('peminjaman.destroy', $value->id)}}" method="POST">
                           @csrf
                           @method('DELETE')
                         <tr>
                             <td>{{ $key + 1}}</td>
-                            <td>{{ $value->kode_buku}}</td>
-                            <td>{{ $value->rak[0]->nama_rak}}</td>
-                            <td>{{ $value->judul_buku}}</td>
-                            <td>{{ $value->penulis_buku}}</td>
-                            <td>{{ $value->penerbit_buku}}</td>
-                            <td>{{ $value->tahun_penerbit}}</td>
+                            <td>{{ $value->anggota[0]->nama_anggota}}</td>
+                            <td>{{ $value->buku[0]->judul_buku}}</td>
+                            <td>{{ $value->petugas[0]->nama_petugas}}</td>
+                            <td>{{ $value->tanggal_pinjam}}</td>
+                            <td>{{ $value->tanggal_kembali}}</td>
                             <td>
                                 <a href="#" class="btn-sm btn-info">show</a>
                                 <a href="#" class="btn-sm btn-warning">edit</a>
@@ -82,8 +78,7 @@
                   <div class="card-footer">
                     <div class="row justify-content-between">
                       <div class="col-3">
-                        <a class="btn btn-primary" href="{{route('buku.create')}}" role="button"> + buku </a>
-                     
+                        <a class="btn btn-primary" href="{{route('peminjaman.create')}}" role="button"> + peminjaman </a>
                     </div>
                     <div class="col-3">
                         <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
@@ -97,11 +92,11 @@
                                 <li class="paginate_button page-item"><a href="{{route('petugas.index')}}"
                                         aria-controls="example2" data-dt-idx="2" tabindex="0"
                                         class="page-link">2</a></li>
-                                <li class="paginate_button page-item active"><a href="{{route('buku.index')}}"
+                                <li class="paginate_button page-item"><a href="{{route('buku.index')}}"
                                         aria-controls="example2" data-dt-idx="3" tabindex="0"
                                         class="page-link">3</a></li>
-                                <li class="paginate_button page-item next disabled" id="example2_next"><a
-                                        href="{{('peminjaman.index')}}" aria-controls="example2" data-dt-idx="2" tabindex="0"
+                                <li class="paginate_button page-item next active" id="example2_next"><a
+                                        href="#" aria-controls="example2" data-dt-idx="2" tabindex="0"
                                         class="page-link">Next</a></li>
                             </ul>
                         </div>

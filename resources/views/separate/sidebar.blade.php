@@ -38,7 +38,7 @@
               <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
               <li class="nav-item">
-                  <a href="{{ route('dashboard') }}" class="nav-link">
+                  <a href="#" class="nav-link">
                       <i class="nav-icon fas fa-tachometer-alt"></i>
                       <p>
                           Dashboard
@@ -46,53 +46,30 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ route('anggota.create') }}" class="nav-link">
+                  <a href="{{ route('anggota.index') }}" class="nav-link">
                       <i class="nav-icon fas fa-th"></i>
                       <p>
-                          Form Anggota
+                          Data Anggota
                       </p>
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('buku.index') }}" class="nav-link">
                       <i class="nav-icon fas fa-th"></i>
                       <p>
-                          Form Buku
+                          Data Buku
                       </p>
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{route('petugas.create')}}" class="nav-link">
+                  <a href="{{route('petugas.index')}}" class="nav-link">
                       <i class="nav-icon fas fa-th"></i>
                       <p>
-                          Form Petugas
+                          Data Petugas
                       </p>
                   </a>
               </li>
-              <li class="nav-item">
-                  <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-th"></i>
-                      <p>
-                          Create Anggota
-                      </p>
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-th"></i>
-                      <p>
-                          Create Buku
-                      </p>
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-th"></i>
-                      <p>
-                          Create Petugas
-                      </p>
-                  </a>
-              </li><br><br><br><br><br>
+              <br><br><br><br><br>
               <li class="nav-item">
                 <form action="{{ route('auth.logout')}}" method="POST">
                 @csrf 

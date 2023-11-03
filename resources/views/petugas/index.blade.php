@@ -92,6 +92,9 @@
                               <li class="paginate_button page-item active"><a href="{{route('petugas.index')}}"
                                       aria-controls="example2" data-dt-idx="1" tabindex="0"
                                       class="page-link">2</a></li>
+                               <li class="paginate_button page-item "><a href="{{route('buku.index')}}"
+                                      aria-controls="example2" data-dt-idx="1" tabindex="0"
+                                      class="page-link">3</a></li>
                               <li class="paginate_button page-item next disabled" id="example2_next"><a
                                       href="#" aria-controls="example2" data-dt-idx="2" tabindex="0"
                                       class="page-link">Next</a></li>

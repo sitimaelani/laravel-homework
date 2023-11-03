@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AnggotaController extends Controller
 {
@@ -12,8 +12,7 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        //
-        $members = DB::table('members')->get();
+        $members = Anggota::all();
         return view('anggota.index', compact('members'));
     }
     
@@ -22,7 +21,6 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        //
         return view('anggota.create');
     }
 
@@ -41,42 +39,38 @@ class AnggotaController extends Controller
             'alamat_anggota' => 'required',
         ]);
 
-        $query = DB::table('members')->insert([
-            'kode_anggota' => $request['kode_anggota'],
-            'nama_anggota' => $request['nama_anggota'],
-            'jk_anggota' => $request['jk_anggota'],
-            'jurusan_anggota' => $request['jurusan_anggota'],
-            'no_telpon' => $request['no_telpon'],
-            'alamat_anggota' => $request['alamat_anggota'],
-        ]);
+        $members = new Anggota;
+        $members->kode_anggota = $request->kode_anggota;
+        $members->nama_anggota = $request->nama_anggota;
+        $members->jk_anggota = $request->jk_anggota;
+        $members->jurusan_anggota = $request->jurusan_anggota;
+        $members->no_telpon = $request->no_telpon;
+        $members->alamat_anggota = $request->alamat_anggota;
+        $members->save();
 
-        return redirect('/anggota');
+        return redirect()->route('dashboard');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Anggota $members)
     {
-        //
-        $members = DB::table('members')->where('id', $id)->get();
         return view('anggota.show', compact('members'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Anggota $members)
     {
-        //
-        $members = DB::table('members')->where('id', $id)->get();
         return view('anggota.edit', compact('members'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Anggota $members)
     {
         //
         $request->validate([
@@ -88,24 +82,17 @@ class AnggotaController extends Controller
             'alamat_anggota' => 'required',
         ]);
 
-        $query = DB::table('members')->where('id', $id)->update([
-            'kode_anggota' => $request['kode_anggota'], 
-            'nama_anggota' => $request['nama_anggota'],
-            'jk_anggota' => $request['jk_anggota'],
-            'jurusan_anggota' => $request['jurusan_anggota'],
-            'no_telpon' => $request['no_telpon'],
-            'alamat_anggota' => $request['alamat_anggota'],
-        ]);
+        $members->update($request->all());
+
         return redirect()->route('anggota.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Anggota $members)
     {
-        //
-        $query = DB::table('members')->where('id', $id)->delete();
+        $members->delete();
         return redirect()->route('anggota.index');
     }
 }

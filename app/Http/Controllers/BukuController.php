@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Models\Rak;
 use App\Models\Buku;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class BukuController extends Controller
 {
@@ -44,16 +43,18 @@ class BukuController extends Controller
             'penulis_buku' => 'required',
             'penerbit_buku' => 'required',
             'tahun_penerbit' => 'required',
+            'stok_buku' => 'required',
         ]);
 
-        $query = DB::table('buku')->insert([
+        $buku::create([
             'kode_buku' => $request['kode_buku'],
             'rak_id' => $request['rak_id'],
             'judul_buku' => $request['judul_buku'],
             'penulis_buku' => $request['penulis_buku'],
             'penerbit_buku' => $request['penerbit_buku'],
             'tahun_penerbit' => $request['tahun_penerbit'],
-        ]);
+            'stok_buku' => $request['stok_buku'],
+        ]); 
 
         return redirect()->route('buku.index');
     }
@@ -71,7 +72,7 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        //
+        
     }
 
     /**
@@ -87,6 +88,7 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-        //
+        $buku = Buku::where('id', $buku->id)->delete();
+        return redirect()->route('buku.index');
     }
 }

@@ -6,37 +6,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Peminjaman;
 use App\Models\Pengembalian;
-use App\Models\Anggota;
 use App\Models\Petugas;
+use App\Models\Buku;
 
 
 
-class Buku extends Model
+
+class Anggota extends Model
 {
     use HasFactory;
 
-    protected $table = 'buku';
+    protected $table = 'members';
     protected $fillable = [
-        'kode_buku',
-        'rak_id',
-        'judul_buku',
-        'penulis_buku',
-        'penerbit_buku',
-        'tahun_penerbit',
-        'stok_buku',
-        
+        'kode_anggota',
+        'nama_anggota',
+        'jk_anggota', 
+        'jurusan_anggota',
+        'no_telpon', 
+        'alamat_anggota', 
     ];
 
-    public function rak()
-    {
-        return $this->hasMany('App\Models\Rak', 'id', 'rak_id');
-    }
-
     public function peminjaman()
-    {
-        return $this->hasMany(Peminjaman::class);
-    }
-
+        {
+            return $this->hasMany(Peminjaman::class);
+        }
+    
     public function pengembalian()
         {
             return $this->hasMany(Peminjaman::class);

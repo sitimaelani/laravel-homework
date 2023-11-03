@@ -32,14 +32,14 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{route ('rak.update', $raks[0]->id)}}" method="POST">
+            <form action="{{ route('rak.update', $rak->id)}}" method="POST">
               @csrf
               @method('PUT')
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputPassword1">Nama Rak</label>
                   <input type="text" class="form-control @error('nama_rak') is-invalid @enderror" name="nama_rak" 
-                    id="exampleInputPassword1" placeholder="Masukan Nama" value="{{$raks[0]->nama_rak}}">
+                    id="exampleInputPassword1" placeholder="Masukan Nama" value="{{$rak->nama_rak}}">
                 </div>
                 @error('nama_rak')
                     <div class="alert alert-danger">{{$message}}</div> 
@@ -47,9 +47,9 @@
                 <div class="form-group">
                   <label for="exampleInputPassword1">Lokasi Rak</label>
                   <input type="text" class="form-control @error('lokasi_rak') is-invalid @enderror" name="lokasi_rak" 
-                    id="exampleInputPassword1" placeholder="Masukan Lokasi" value="{{$raks[0]->lokasi_rak}}">
+                    id="exampleInputPassword1" placeholder="Masukan Lokasi" value="{{$rak->lokasi_rak}}">
                 </div>
-                @error('nama_rak')
+                @error('lokasi_rak')
                     <div class="alert alert-danger">{{$message}}</div> 
                 @enderror
               <!-- /.card-body -->

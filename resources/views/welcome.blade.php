@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'dashboard')
+@section('title', 'welcome')
 @section('content')
 <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -7,11 +7,11 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Welcome</h1>
+                            <h1 class="m-0"></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#"></a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -20,51 +20,25 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                            
-                        <!-- /.col-md-6 -->
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="m-0">Data Anggota</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Lorem ipsum dolor sit amet.</h6>
+    <section class="content">
+        <div class="error-page">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          
 
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, sequi?</p>
-                                    <a href="{{route('anggota.index')}}" class="btn btn-primary">Click me</a>
-                                </div>
-                            </div>
+          <div class="text-center">
+            <h1><b>Perpustakaan</b></h1>
+            <a href="{{ route('peminjaman.create')}}" class="btn btn-primary ">Peminjaman</a>
+            <a href="{{ route('pengembalian.create')}}" class="btn btn-primary ">Pengembalian</a>
 
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="m-0">Data Buku</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Lorem ipsum dolor sit amet.</h6>
-                                    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus, asperiores!</p>
-                                    <a href="#" class="btn btn-primary">Click me</a>
-                                </div>
-                            </div>
-                            
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="m-0">Data Petugas</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Lorem ipsum dolor sit amet.</h6>
-                                    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus, asperiores!</p>
-                                    <a href="#" class="btn btn-primary">Click me</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-md-6 -->
-                    </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
+          </div>
+        </div>
+        <!-- /.error-page -->
+  
+      </section>
             <!-- /.content -->
         </div>
 @endsection
